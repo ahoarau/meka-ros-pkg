@@ -11,8 +11,6 @@
     <param name="tf_prefix" type="string" value="" />
   </node>
 
-<!-- Kinect To meka stuff -->
-<include file="$(find meka_description)/kinect_to_meka.launch"/>
 
 </launch>
 

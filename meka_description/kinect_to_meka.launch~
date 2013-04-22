@@ -1,0 +1,5 @@
+<launch>
+<node pkg="tf" type="static_transform_publisher" name="T0" args="1 0 0 0 0 0 upper T0 100" />
+<node pkg="tf" type="static_transform_publisher" name="kinect_to_meka" args="1 0 0 0 0 0 T0 camera_link 100" />
+<node pkg="tf" type="static_transform_publisher" name="openni_tracker_to_meka" args="0 0 0 0 0 0 T0 openni_depth_frame 100" />
+</launch>
