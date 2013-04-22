@@ -5,7 +5,7 @@
 
     <!-- left camera -->
     <node pkg="camera1394" type="camera1394_node" name="left_node" >
-      <rosparam file="$(env M3_ROBOT)/ros_config/cameras/point_grey_0.yml" />
+      <rosparam file="$(env HOME)/mekabot/m3ens/ros_config/cameras/point_grey_0.yml" />
       <remap from="camera" to="left" />
     </node>
     <node ns="left" pkg="image_proc" type="image_proc" name="left_proc"/>
@@ -13,7 +13,7 @@
 
     <!-- right camera -->
     <node pkg="camera1394" type="camera1394_node" name="right_node" >
-      <rosparam file="$(env M3_ROBOT)/ros_config/cameras/point_grey_1.yml" />
+      <rosparam file="$(env HOME)/mekabot/m3ens/ros_config/cameras/point_grey_1.yml" />
       <remap from="camera" to="right" />
     </node>  
     <node ns="right" pkg="image_proc" type="image_proc" name="left_proc"/>
