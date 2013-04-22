@@ -149,7 +149,7 @@ if __name__ == '__main__':
     joints.append('head_j5')
     joints.append('head_j6')
     joints.append('head_j7')
-    
+
     rospy.init_node("m3_joint_state_publisher")
     pub = rospy.Publisher("/joint_states", JointState)
     loop_rate = rospy.Rate(50.0)
@@ -196,6 +196,7 @@ if __name__ == '__main__':
             all_head_joints = bot.get_theta_rad('head')
             for i in xrange(0,bot.get_num_dof('head')):
                 positions.append(all_head_joints[i])
+
             pub.publish(JointState(header, joints, positions, [0] * len(positions), [0] * len(positions)))
             proxy.step()
             loop_rate.sleep()
