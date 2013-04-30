@@ -13,6 +13,10 @@
 
 <!-- Kinect To meka stuff -->
 <include file="$(find meka_description)/kinect_to_meka.launch"/>
-
+<!--
+<node pkg="tf" type="static_transform_publisher" name="T0" args="0 0 0.2337 0 0 0 upper T0 100" />
+<node pkg="tf" type="static_transform_publisher" name="kinect_to_meka" args="0.0953 0 0 0 0 0 T0 camera_link 100" />
+<node pkg="tf" type="static_transform_publisher" name="openni_tracker_to_meka" args="0 0 0 0 0 0 camera_link openni_depth_frame 100" />
+-->
 </launch>
 
