@@ -54,6 +54,9 @@ class TrajAction(object):
                 self.chains = self.bot.get_available_chains()
                 
                 self.bot.initialize(self.proxy)
+		humanoid_shm_names=self.proxy.get_available_components('m3humanoid_shm')
+    		if len(humanoid_shm_names) > 0:
+        		self.proxy.make_safe_operational(humanoid_shm_names[0])
 
         def execute_cb(self, goal):
                 # helper variables
