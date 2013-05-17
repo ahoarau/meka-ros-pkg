@@ -1,7 +1,11 @@
 ; Auto-generated. Do not edit!
 
 
+<<<<<<< HEAD
 (cl:in-package simple_traj_server-msg)
+=======
+(cl:in-package meka_trajectory-msg)
+>>>>>>> a95bc939bd8284654725073b92d29398a091455b
 
 
 ;//! \htmlinclude TrajFeedback.msg.html
@@ -16,7 +20,11 @@
 (cl:defmethod cl:initialize-instance :after ((m <TrajFeedback>) cl:&rest args)
   (cl:declare (cl:ignorable args))
   (cl:unless (cl:typep m 'TrajFeedback)
+<<<<<<< HEAD
     (roslisp-msg-protocol:msg-deprecation-warning "using old message class name simple_traj_server-msg:<TrajFeedback> is deprecated: use simple_traj_server-msg:TrajFeedback instead.")))
+=======
+    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name meka_trajectory-msg:<TrajFeedback> is deprecated: use meka_trajectory-msg:TrajFeedback instead.")))
+>>>>>>> a95bc939bd8284654725073b92d29398a091455b
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <TrajFeedback>) ostream)
   "Serializes a message object of type '<TrajFeedback>"
 )
@@ -26,10 +34,17 @@
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<TrajFeedback>)))
   "Returns string type for a message object of type '<TrajFeedback>"
+<<<<<<< HEAD
   "simple_traj_server/TrajFeedback")
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql 'TrajFeedback)))
   "Returns string type for a message object of type 'TrajFeedback"
   "simple_traj_server/TrajFeedback")
+=======
+  "meka_trajectory/TrajFeedback")
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql 'TrajFeedback)))
+  "Returns string type for a message object of type 'TrajFeedback"
+  "meka_trajectory/TrajFeedback")
+>>>>>>> a95bc939bd8284654725073b92d29398a091455b
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<TrajFeedback>)))
   "Returns md5sum for a message object of type '<TrajFeedback>"
   "d41d8cd98f00b204e9800998ecf8427e")
