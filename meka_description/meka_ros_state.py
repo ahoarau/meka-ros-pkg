@@ -201,7 +201,7 @@ if __name__ == '__main__':
             all_head_joints = bot.get_theta_rad('head')
             for i in xrange(0,bot.get_num_dof('head')-1):
                 positions.append(all_head_joints[i])
-            eye_lids_angle_rad = all_head_joints[6]-m3t.deg2rad(35.0)
+            eye_lids_angle_rad = all_head_joints[-1]-m3t.deg2rad(35.0)
             for i in xrange(4):
                 positions.append(eye_lids_angle_rad)
 
