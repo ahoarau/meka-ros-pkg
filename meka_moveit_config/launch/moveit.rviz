@@ -1,0 +1,632 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 84
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /MotionPlanning1
+        - /MotionPlanning1/Scene Robot1
+        - /MotionPlanning1/Scene Robot1/Links1/handmount_RIGHT1
+        - /MotionPlanning1/Planning Request1
+        - /MotionPlanning1/Planning Metrics1
+        - /MotionPlanning1/Planned Path1
+        - /TF1/Status1
+      Splitter Ratio: 0.74256
+    Tree Height: 377
+  - Class: rviz/Help
+    Name: Help
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.03
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Class: moveit_rviz_plugin/MotionPlanning
+      Enabled: true
+      MoveIt_Goal_Tolerance: 0
+      MoveIt_Planning_Time: 5
+      MoveIt_Use_Constraint_Aware_IK: true
+      MoveIt_Warehouse_Host: 127.0.0.1
+      MoveIt_Warehouse_Port: 33829
+      Name: MotionPlanning
+      Planned Path:
+        Links:
+          bicep_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          dummy_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          dummy_2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          dummy_3:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          elbowclevis_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          eye_tilt:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          handmount_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          head_shell:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          index0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          index1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          index2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          left_eye:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lt_eyelid_bottom:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lt_eyelid_top:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          neck_roll:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          neck_tilt:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          neck_yaw:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          palm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          pinky0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          pinky1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          pinky2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          right_eye:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          ring0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          ring1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          ring2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          rt_eyelid_bottom:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          rt_eyelid_top:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          shoulderpitch_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          shoulderupper_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          thumb0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          thumb1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          thumb2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          upper:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          w_differential_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          zlift_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+        Loop Animation: true
+        Robot Alpha: 0.5
+        Show Robot Collision: false
+        Show Robot Visual: true
+        Show Trail: false
+        State Display Time: 0.05 s
+        Trajectory Topic: /move_group/display_planned_path
+      Planning Metrics:
+        Payload: 1
+        Show Joint Torques: false
+        Show Manipulability: false
+        Show Manipulability Index: false
+        Show Weight Limit: false
+        TextHeight: 0.08
+      Planning Request:
+        Colliding Link Color: 255; 0; 0
+        Goal State Alpha: 1
+        Goal State Color: 250; 128; 0
+        Interactive Marker Size: 0
+        Joint Violation Color: 255; 0; 255
+        Planning Group: right_arm
+        Query Goal State: true
+        Query Start State: true
+        Show Workspace: false
+        Start State Alpha: 1
+        Start State Color: 0; 255; 0
+      Planning Scene Topic: /planning_scene
+      Robot Description: robot_description
+      Scene Geometry:
+        Scene Alpha: 0.9
+        Scene Color: 50; 230; 50
+        Scene Display Time: 0.2
+        Show Scene Geometry: true
+        Voxel Coloring: Z-Axis
+        Voxel Rendering: Occupied Voxels
+      Scene Robot:
+        Attached Body Color: 150; 50; 150
+        Links:
+          bicep_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          dummy_1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          dummy_2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          dummy_3:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          elbowclevis_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          eye_tilt:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          handmount_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          head_shell:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          index0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          index1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          index2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          left_eye:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lt_eyelid_bottom:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lt_eyelid_top:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          neck_roll:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          neck_tilt:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          neck_yaw:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          palm:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          pinky0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          pinky1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          pinky2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          right_eye:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          ring0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          ring1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          ring2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          rt_eyelid_bottom:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          rt_eyelid_top:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          shoulderpitch_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          shoulderupper_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          thumb0:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          thumb1:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          thumb2:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          upper:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          w_differential_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          wrist_RIGHT:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          zlift_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+        Robot Alpha: 0.5
+        Show Scene Robot: true
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        /base_link:
+          Value: true
+        /bicep_RIGHT:
+          Value: true
+        /dummy_1:
+          Value: true
+        /dummy_2:
+          Value: true
+        /dummy_3:
+          Value: true
+        /elbowclevis_RIGHT:
+          Value: true
+        /eye_tilt:
+          Value: true
+        /handmount_RIGHT:
+          Value: true
+        /head_shell:
+          Value: true
+        /index0:
+          Value: true
+        /index1:
+          Value: true
+        /index2:
+          Value: true
+        /left_eye:
+          Value: true
+        /lt_eyelid_bottom:
+          Value: true
+        /lt_eyelid_top:
+          Value: true
+        /neck_roll:
+          Value: true
+        /neck_tilt:
+          Value: true
+        /neck_yaw:
+          Value: true
+        /palm:
+          Value: true
+        /pinky0:
+          Value: true
+        /pinky1:
+          Value: true
+        /pinky2:
+          Value: true
+        /right_eye:
+          Value: true
+        /ring0:
+          Value: true
+        /ring1:
+          Value: true
+        /ring2:
+          Value: true
+        /rt_eyelid_bottom:
+          Value: true
+        /rt_eyelid_top:
+          Value: true
+        /shoulderpitch_RIGHT:
+          Value: true
+        /shoulderupper_RIGHT:
+          Value: true
+        /thumb0:
+          Value: true
+        /thumb1:
+          Value: true
+        /thumb2:
+          Value: true
+        /upper:
+          Value: true
+        /w_differential_RIGHT:
+          Value: true
+        /world:
+          Value: true
+        /wrist_RIGHT:
+          Value: true
+        /zlift_link:
+          Value: true
+        All Enabled: true
+      Marker Scale: 0.5
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        /world:
+          /base_link:
+            /dummy_1:
+              /dummy_2:
+                /dummy_3:
+                  /zlift_link:
+                    /upper:
+                      /neck_tilt:
+                        /neck_roll:
+                          /neck_yaw:
+                            /head_shell:
+                              /eye_tilt:
+                                /left_eye:
+                                  /lt_eyelid_bottom:
+                                    {}
+                                  /lt_eyelid_top:
+                                    {}
+                                /right_eye:
+                                  /rt_eyelid_bottom:
+                                    {}
+                                  /rt_eyelid_top:
+                                    {}
+                      /shoulderupper_RIGHT:
+                        /shoulderpitch_RIGHT:
+                          /bicep_RIGHT:
+                            /elbowclevis_RIGHT:
+                              /wrist_RIGHT:
+                                /w_differential_RIGHT:
+                                  /handmount_RIGHT:
+                                    /palm:
+                                      /index0:
+                                        /index1:
+                                          /index2:
+                                            {}
+                                      /pinky0:
+                                        /pinky1:
+                                          /pinky2:
+                                            {}
+                                      /ring0:
+                                        /ring1:
+                                          /ring2:
+                                            {}
+                                      /thumb0:
+                                        /thumb1:
+                                          /thumb2:
+                                            {}
+      Update Interval: 0
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: /base_link
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+  Value: true
+  Views:
+    Current:
+      Class: rviz/XYOrbit
+      Distance: 3.78699
+      Focal Point:
+        X: 0.261091
+        Y: 0.312399
+        Z: 8.5385e-07
+      Name: Current View
+      Near Clip Distance: 0.01
+      Pitch: 0.674797
+      Target Frame: /base_link
+      Value: XYOrbit (rviz)
+      Yaw: 5.57497
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 1056
+  Help:
+    collapsed: false
+  Hide Left Dock: false
+  Hide Right Dock: false
+  Motion Planning:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003dafc0200000006fb000000100044006900730070006c00610079007301000000280000020e000000dd00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e0067010000023c000001c60000017400fffffffb00000020004f0062006a00650063007400200044006500740065006300740069006f006e0100000357000000ab0000000000000000000004a7000003da00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Views:
+    collapsed: false
+  Width: 1871
+  X: 41
+  Y: 116

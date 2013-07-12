@@ -148,8 +148,11 @@ if __name__ == '__main__':
     joints.append('head_j4')
     joints.append('head_j5')
     joints.append('head_j6')
-    joints.append('head_j7')
-
+    joints.append('head_j7_rt_eyelid_top')
+    joints.append('head_j7_rt_eyelid_bottom')
+    joints.append('head_j7_lt_eyelid_top')
+    joints.append('head_j7_lt_eyelid_bottom')
+       
     rospy.init_node("m3_joint_state_publisher")
     pub = rospy.Publisher("/joint_states", JointState)
     loop_rate = rospy.Rate(50.0)
@@ -160,6 +163,8 @@ if __name__ == '__main__':
             header = Header(0, rospy.Time.now(), '0')
             positions = []
             # Omnibase state
+            proxy.step()
+            #omni_torque = omni.get_steer_torques()
             omni_pos = omni.get_local_position()
             omni_x = omni_pos[0]
             omni_y = omni_pos[1]
@@ -194,11 +199,13 @@ if __name__ == '__main__':
 
             # Head state
             all_head_joints = bot.get_theta_rad('head')
-            for i in xrange(0,bot.get_num_dof('head')):
+            for i in xrange(0,bot.get_num_dof('head')-1):
                 positions.append(all_head_joints[i])
+            eye_lids_angle_rad = all_head_joints[6]-m3t.deg2rad(35.0)
+            for i in xrange(4):
+                positions.append(eye_lids_angle_rad)
 
             pub.publish(JointState(header, joints, positions, [0] * len(positions), [0] * len(positions)))
-            proxy.step()
             loop_rate.sleep()
     except (KeyboardInterrupt, EOFError, rospy.ROSInterruptException):
         proxy.step()

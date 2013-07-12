@@ -124,7 +124,6 @@
     </joint>
         
     <link name="head_shell">
-
       <inertial>       
         <mass value="3.178" />
 	<origin xyz="0.034944 0.000563 0.058668"/>
@@ -137,7 +136,7 @@
       </inertial>
 
       <visual>
-	      <material name="GreyA" />
+	      <material name="GreyC" />
 	      <origin xyz="0 0 0" rpy="0 0 0 " />
 	      <geometry name="head_shell_geom">		
 		<mesh filename="package://${MESH}/S2R1/S2R1_H4_UTA_head.dae" />
@@ -231,7 +230,106 @@
 	      </geometry>
       </collision>
     </link>
-   
+    
+    <joint name="head_j7_rt_eyelid_top" type="revolute">
+	    <axis xyz="0 -1 0" />
+      <limit effort="100" velocity="${1600*M_PI/180}" lower="${2.0*M_PI/180}" upper="${68.0*M_PI/180}" /> 
+      <origin xyz="0 0.0 0" rpy="0 0.785 0" />
+      <parent link="right_eye"/>
+      <child link="rt_eyelid_top"/>
+    </joint>
+    
+    <link name="rt_eyelid_top">
+      <visual>
+	      <material name="GreyC" />
+	      <origin xyz="0 0 0" rpy="0 0 0 " />
+	      <geometry name="rt_eyelid_top_geom">
+		      <mesh filename="package://${MESH}/S2R1/eyelid_top.dae" />
+	      </geometry>  
+      </visual>
+      
+      <collision>
+	      <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
+	      <geometry name="rt_eyelid_top_collision">
+		      <box size="0.01 0.01 0.01" />
+	      </geometry>
+      </collision>
+    </link>
+       
+    <joint name="head_j7_rt_eyelid_bottom" type="revolute">
+	    <axis xyz="0 1 0" />
+       <limit effort="100" velocity="${1600*M_PI/180}" lower="${2.0*M_PI/180}" upper="${68.0*M_PI/180}" /> 
+      <origin xyz="0 0.0 0" rpy="0 -0.785 0" />
+      <parent link="right_eye"/>
+      <child link="rt_eyelid_bottom"/>
+    </joint>
+    
+    <link name="rt_eyelid_bottom">
+      <visual>
+	      <material name="GreyC" />
+	      <origin xyz="0 0 0" rpy="0 0 0 " />
+	      <geometry name="eyelid_bottom_geom">
+		      <mesh filename="package://${MESH}/S2R1/eyelid_bottom.dae" />
+	      </geometry>  
+      </visual>
+      
+      <collision>
+	      <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
+	      <geometry name="eyelid_bottom_collision">
+		      <box size="0.01 0.01 0.01" />
+	      </geometry>
+      </collision>
+    </link>
+
+    <joint name="head_j7_lt_eyelid_top" type="revolute">
+	    <axis xyz="0 -1 0" />
+       <limit effort="100" velocity="${1600*M_PI/180}" lower="${2.0*M_PI/180}" upper="${68.0*M_PI/180}" />  
+      <origin xyz="0 0.0 0" rpy="0 0.785 0" />
+      <parent link="left_eye"/>
+      <child link="lt_eyelid_top"/>
+    </joint>
+    
+    <link name="lt_eyelid_top">
+      <visual>
+	      <material name="GreyC" />
+	      <origin xyz="0 0 0" rpy="0 0 0 " />
+	      <geometry name="lt_eyelid_top_geom">
+		      <mesh filename="package://${MESH}/S2R1/eyelid_top.dae" />
+	      </geometry>  
+      </visual>
+      
+      <collision>
+	      <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
+	      <geometry name="lt_eyelid_top_collision">
+		      <box size="0.01 0.01 0.01" />
+	      </geometry>
+      </collision>
+    </link>
+       
+    <joint name="head_j7_lt_eyelid_bottom" type="revolute">
+	    <axis xyz="0 1 0" />
+       <limit effort="100" velocity="${1600*M_PI/180}" lower="${2.0*M_PI/180}" upper="${68.0*M_PI/180}" />  
+      <origin xyz="0 0.0 0" rpy="0 -0.785 0" />
+      <parent link="left_eye"/>
+      <child link="lt_eyelid_bottom"/>
+    </joint>
+    
+    <link name="lt_eyelid_bottom">
+      <visual>
+	      <material name="GreyC" />
+	      <origin xyz="0 0 0" rpy="0 0 0 " />
+	      <geometry name="eyelid_bottom_geom2">
+		      <mesh filename="package://${MESH}/S2R1/eyelid_bottom.dae" />
+	      </geometry>  
+      </visual>
+      
+      <collision>
+	      <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
+	      <geometry name="eyelid_bottom_collision2">
+		      <box size="0.01 0.01 0.01" />
+	      </geometry>
+      </collision>
+    </link>   
 </macro>
 
 
