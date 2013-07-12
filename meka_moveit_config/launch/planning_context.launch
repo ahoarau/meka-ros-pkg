@@ -6,11 +6,11 @@
   <!--param if="$(arg load_robot_description)" name="robot_description" textfile="$(find meka_description)/robots/ens.urdf.xacro" -->
       <param name="robot_description" command="$(find xacro)/xacro.py '$(find meka_description)/robots/ens.urdf.xacro'" />
   <!-- The semantic description that corresponds to the URDF -->
-  <param name="robot_description_semantic" textfile="$(find meka2_moveit_config)/config/meka.srdf" />
+  <param name="robot_description_semantic" textfile="$(find meka_moveit_config)/config/meka.srdf" />
   
   <!-- Load to the parameter server yaml files -->
   <group ns="robot_description_planning">    
-    <rosparam command="load" file="$(find meka2_moveit_config)/config/joint_limits.yaml"/>
+    <rosparam command="load" file="$(find meka_moveit_config)/config/joint_limits.yaml"/>
   </group>
   
 </launch>
