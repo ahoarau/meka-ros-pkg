@@ -21,7 +21,7 @@
 import m3
 import time
 import os
-import roslib; roslib.load_manifest('meka_description')
+#import roslib; roslib.load_manifest('meka_description')
 import rospy
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Header
@@ -194,7 +194,7 @@ if __name__ == '__main__':
 
             # Head state
             all_head_joints = bot.get_theta_rad('head')
-            for i in xrange(0,bot.get_num_dof('head')):
+       	    for i in xrange(0,bot.get_num_dof('head')):
                 positions.append(all_head_joints[i])
 
             pub.publish(JointState(header, joints, positions, [0] * len(positions), [0] * len(positions)))
