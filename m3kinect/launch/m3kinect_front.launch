@@ -1,0 +1,10 @@
+<launch>
+<arg name="depth_registration" default="false" />
+
+<include file="$(find openni_launch)/launch/openni.launch">
+<arg name="camera" value="kinect_front" />
+<arg name="depth_registration" value="$(arg depth_registration)" />
+<arg name="device_id" value="1@3" />
+</include>
+
+</launch>
