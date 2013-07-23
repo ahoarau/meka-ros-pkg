@@ -1,6 +1,7 @@
 <launch>
-
-  <!-- send pr2_l_arm.xml to param server -->
+<!-- Robot parameter server -->
+<rosparam file="$(env M3_ROBOT)/ros_config/kinect/m3kinect_params.yml" command="load" />
+<!-- ROBOT Description (URDF Model) -->
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find meka_description)/robots/ens.urdf.xacro'" />
 
   <!--node pkg="rviz" type="rviz" respawn="false" output="screen" name="rviz"/-->
@@ -11,12 +12,7 @@
     <param name="tf_prefix" type="string" value="" />
   </node>
 
-<!-- Kinect To meka stuff -->
-<include file="$(find meka_description)/kinect_to_meka.launch"/>
-<!--
-<node pkg="tf" type="static_transform_publisher" name="T0" args="0 0 0.2337 0 0 0 upper T0 100" />
-<node pkg="tf" type="static_transform_publisher" name="kinect_to_meka" args="0.0953 0 0 0 0 0 T0 camera_link 100" />
-<node pkg="tf" type="static_transform_publisher" name="openni_tracker_to_meka" args="0 0 0 0 0 0 camera_link openni_depth_frame 100" />
--->
+<!-- Zero robot tf, kinect and head -->
+<include file="$(find meka_description)/meka_additional_transforms.launch"/>
 </launch>
 
