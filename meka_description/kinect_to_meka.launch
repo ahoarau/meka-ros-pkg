@@ -1,7 +1,0 @@
-<launch>
-<node pkg="tf" type="static_transform_publisher" name="T0" args="0 0 0.2337 0 0 0 upper T0 50" />
-<node pkg="tf" type="static_transform_publisher" name="meka_static_head" args="0.15 0 0.20 0.15 0 0 T0 meka_static_head 50" />
-<node pkg="tf" type="static_transform_publisher" name="kinect_to_meka" args="0.0953 0 0 0 0 0 T0 camera_link 50" />
-<!--node pkg="tf" type="static_transform_publisher" name="kinect_top_to_meka" args="0.40 -0.020 0.61 0 1.57079632679 0 T0 camera_link 50" /-->
-<node pkg="tf" type="static_transform_publisher" name="openni_tracker_to_meka" args="0 0 0 0 0 0 camera_link openni_depth_frame 50" />
-</launch>
