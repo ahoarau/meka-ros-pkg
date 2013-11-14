@@ -256,7 +256,7 @@
     <joint name="right_hand_j7" type="revolute">
       <axis xyz="0 1 0" />
       <limit effort="100" velocity="${1600*M_PI/180}" lower="${-34.21*M_PI/180}" upper="${34.213*M_PI/180}" /> 
-      <origin xyz="0 0 -0.025" rpy="0 0 0" />
+      <origin xyz="0 0.008 -0.025" rpy="0 0 0" />
       <parent link="index2"/>
       <child link="index_end"/>
     </joint>
@@ -366,7 +366,7 @@
     <joint name="right_hand_j11" type="revolute">
       <axis xyz="0 1 0" />
       <limit effort="100" velocity="${1600*M_PI/180}" lower="${-34.21*M_PI/180}" upper="${34.213*M_PI/180}" /> 
-      <origin xyz="0 0 -0.025" rpy="0 0 0" />
+      <origin xyz="0 0.008 -0.025" rpy="0 0 0" />
       <parent link="ring2"/>
       <child link="ring_end"/>
     </joint>
@@ -476,7 +476,7 @@
     <joint name="right_hand_j15" type="revolute">
       <axis xyz="0 1 0" />
       <limit effort="100" velocity="${1600*M_PI/180}" lower="${-34.21*M_PI/180}" upper="${34.213*M_PI/180}" /> 
-      <origin xyz="0 0 -0.025" rpy="0 0 0" />
+      <origin xyz="0 0.008 -0.025" rpy="0 0 0" />
       <parent link="pinky2"/>
       <child link="pinky_end"/>
     </joint>

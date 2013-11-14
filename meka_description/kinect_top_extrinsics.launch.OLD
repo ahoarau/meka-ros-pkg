@@ -1,0 +1,3 @@
+<launch>
+<node pkg="tf" type="static_transform_publisher" name="kinect_top" args="0.365858132909 0.0132961681594 0.604595653342 0.0238730713079 0.706121221522 -0.00671686323661 0.707656541502 T0 kinect_top_link 100" />
+</launch>
