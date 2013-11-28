@@ -1,7 +1,0 @@
-set(_CATKIN_CURRENT_PACKAGE "m3openni_tracker")
-set(m3openni_tracker_MAINTAINER "meka <meka@todo.todo>")
-set(m3openni_tracker_DEPRECATED "")
-set(m3openni_tracker_VERSION "0.0.0")
-set(m3openni_tracker_BUILD_DEPENDS "roscpp" "openni_tracker" "orocos_kdl" "tf")
-set(m3openni_tracker_RUN_DEPENDS "roscpp" "openni_tracker" "orocos_kdl" "tf")
-set(m3openni_tracker_BUILDTOOL_DEPENDS "catkin")

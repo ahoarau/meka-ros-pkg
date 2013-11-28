@@ -4,7 +4,8 @@ project(m3openni_tracker)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp openni_camera orocos_kdl tf)
+find_package(orocos_kdl REQUIRED)
+find_package(catkin REQUIRED COMPONENTS roscpp openni_camera tf)
 
 ## System dependencies are found with CMake's conventions
 #find_path (OPENNI_INCLUDE_DIR XnOpenNI.h PATH_SUFFIXES ni openni)
@@ -84,7 +85,7 @@ include_directories(
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(m3openni_tracker
-   ${catkin_LIBRARIES}
+   ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES}
  )
 
 #############

@@ -1,13 +1,13 @@
 <package>
-  <description brief="m3_cameras">
+  <description brief="m3cameras">
 
-     m3_cameras
+     m3cameras
 
   </description>
   <author>meka</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
-  <url>http://ros.org/wiki/m3_cameras</url>
+  <url>http://ros.org/wiki/m3cameras</url>
   <depend package="roscpp"/>
   <depend package="rospy"/>
   <depend package="camera1394"/>
