@@ -14,8 +14,8 @@
  
 
 <!-- Meka Hand -->
-<include filename="$(find m3_description)/urdf/H2R2_r_hand_defs.urdf.xacro" />
-  <include filename="$(find m3_description)/urdf/H2R2_l_hand_defs.urdf.xacro" />  
+<xacro:include filename="$(find m3_description)/urdf/H2R2_r_hand_defs.urdf.xacro" />
+  <xacro:include filename="$(find m3_description)/urdf/H2R2_l_hand_defs.urdf.xacro" />  
   
   <material name="GreyA"> <!-- darkest -->
 	  <color rgba="0.3 0.3 0.3 1.0"/>
