@@ -13,7 +13,7 @@
 
 
 <!-- Meka Arm -->
-  <include filename="$(find m3_description)/urdf/A2R1_r_arm_defs.urdf.xacro" />
+  <xacro:include filename="$(find m3_description)/urdf/A2R1_r_arm_defs.urdf.xacro" />
 
 
    <property name="M_PI" value="3.1415926535897931" />

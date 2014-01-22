@@ -12,36 +12,36 @@
  <property name="MESH_COLL" value="meka_description/meshes/low_res" />
 
 <!-- generic simulator_gazebo plugins for starting mechanism control, ros time, ros battery -->
-  <include filename="$(find meka_description)/gazebo/gazebo.urdf.xacro" />
-  <!--<include filename="$(find meka_description)/transmissions/uta.transmission.xacro" />-->
+  <xacro:include filename="$(find meka_description)/gazebo/gazebo.urdf.xacro" />
+  <!--<xacro:include filename="$(find meka_description)/transmissions/uta.transmission.xacro" />-->
 
 <!-- Meka Base -->
-  <include filename="$(find meka_description)/urdf/B1R2B_defs.urdf.xacro" />
+  <xacro:include filename="$(find meka_description)/urdf/B1R2B_defs.urdf.xacro" />
 
 <!-- Meka Zlift -->
-  <include filename="$(find meka_description)/urdf/Z1R2B_defs.urdf.xacro" />
+  <xacro:include filename="$(find meka_description)/urdf/Z1R2B_defs.urdf.xacro" />
 
 <!-- Meka Arm -->
-  <include filename="$(find meka_description)/urdf/A2R4_r_arm_defs.urdf.xacro" />
+  <xacro:include filename="$(find meka_description)/urdf/A2R4_r_arm_defs.urdf.xacro" />
 
-  <include filename="$(find meka_description)/urdf/A2R4_l_arm_defs.urdf.xacro" />
+  <xacro:include filename="$(find meka_description)/urdf/A2R4_l_arm_defs.urdf.xacro" />
   
 
   <!-- Meka Hand -->
-  <include filename="$(find meka_description)/urdf/H2R4_r_hand_defs.urdf.xacro" />
+  <xacro:include filename="$(find meka_description)/urdf/H2R4_r_hand_defs.urdf.xacro" />
 
-  <include filename="$(find meka_description)/urdf/H2R4_l_hand_defs.urdf.xacro" />
+  <xacro:include filename="$(find meka_description)/urdf/H2R4_l_hand_defs.urdf.xacro" />
 
   
 <!-- Meka Head -->
-  <include filename="$(find meka_description)/urdf/S3R1_head_defs.urdf.xacro" />
+  <xacro:include filename="$(find meka_description)/urdf/S3R1_head_defs.urdf.xacro" />
 
 
 
   <!-- john added transmissions -->
-  <include filename="$(find meka_description)/transmissions/A2R4_r_arm_defs.transmission.xacro" />
-  <!--<include filename="$(find meka_description)/transmissions/H2R2_r_hand_defs.transmission.xacro" />-->
-  <!--<include filename="$(find meka_description)/transmissions/S2R1_head_defs.transmission.xacro" />-->
+  <xacro:include filename="$(find meka_description)/transmissions/A2R4_r_arm_defs.transmission.xacro" />
+  <!--<xacro:include filename="$(find meka_description)/transmissions/H2R2_r_hand_defs.transmission.xacro" />-->
+  <!--<xacro:include filename="$(find meka_description)/transmissions/S2R1_head_defs.transmission.xacro" />-->
 
 
    <property name="M_PI" value="3.1415926535897931" />

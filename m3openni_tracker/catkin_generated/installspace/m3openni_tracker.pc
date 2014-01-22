@@ -1,8 +1,0 @@
-prefix=/usr/local
-
-Name: m3openni_tracker
-Description: Description of m3openni_tracker
-Version: 0.0.0
-Cflags: 
-Libs: -L/usr/local/lib 
-Requires: 

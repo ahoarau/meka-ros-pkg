@@ -164,16 +164,20 @@ if __name__ == '__main__':
         #        time.sleep(0.5)
             proxy.step()
             joints = []
+            print 'Available Components'
             if omni:
+            	print '- Omnibase'
                 omni.set_local_position(0,0,0,proxy)
                 omni.set_global_position(0,0,0,proxy)
                 joints.append('X')    
                 joints.append('Y')   
                 joints.append('yaw')
             if zlift:
+            	print '- Zlift'
                 calib_zlift = zlift.get_encoder_calibrated()
                 joints.append('zlift_joint')
             if right_arm:
+            	print '- Right Arm'
                 joints.append('right_arm_j0')
                 joints.append('right_arm_j1')
                 joints.append('right_arm_j2')
@@ -182,6 +186,7 @@ if __name__ == '__main__':
                 joints.append('right_arm_j5')
                 joints.append('right_arm_j6')
             if left_arm:
+            	print '- left Arm'
                 joints.append('left_arm_j0')
                 joints.append('left_arm_j1')
                 joints.append('left_arm_j2')
@@ -190,11 +195,12 @@ if __name__ == '__main__':
                 joints.append('left_arm_j5')
                 joints.append('left_arm_j6')
             if right_hand: 
+            	print '- Right Hand'
                 ndof_finger = 3
-                flex_factor_index = [0.3] * ndof_finger 
-                flex_factor_ring = [0.3] * ndof_finger
-                flex_factor_pinky = [0.3] * ndof_finger
-                flex_factor_thumb = [0.3] * 2
+                flex_factor_index = [0.3] * (ndof_finger+1)
+                flex_factor_ring = [0.3] * (ndof_finger+1)
+                flex_factor_pinky = [0.3] * (ndof_finger+1)
+                flex_factor_thumb = [0.3] * (ndof_finger)
                 joints.append('right_hand_j0')
                 joints.append('right_hand_j1')
                 joints.append('right_hand_j2')
@@ -207,12 +213,17 @@ if __name__ == '__main__':
                 joints.append('right_hand_j9')
                 joints.append('right_hand_j10')
                 joints.append('right_hand_j11')
+                joints.append('right_hand_j12')
+                joints.append('right_hand_j13')
+                joints.append('right_hand_j14')
+                joints.append('right_hand_j15')
             if left_hand:
+            	print '- Left Hand'
                 ndof_finger = 3
-                flex_factor_index = [0.3] * ndof_finger 
-                flex_factor_ring = [0.3] * ndof_finger
-                flex_factor_pinky = [0.3] * ndof_finger
-                flex_factor_thumb = [0.3] * 2
+                flex_factor_index = [0.3] * (ndof_finger+1)
+                flex_factor_ring = [0.3] * (ndof_finger+1)
+                flex_factor_pinky = [0.3] * (ndof_finger+1)
+                flex_factor_thumb = [0.3] * (ndof_finger)
                 joints.append('left_hand_j0')
                 joints.append('left_hand_j1')
                 joints.append('left_hand_j2')
@@ -225,7 +236,12 @@ if __name__ == '__main__':
                 joints.append('left_hand_j9')
                 joints.append('left_hand_j10')
                 joints.append('left_hand_j11')
+                joints.append('left_hand_j12')
+                joints.append('left_hand_j13')
+                joints.append('left_hand_j14')
+                joints.append('left_hand_j15')
             if head:
+            	print '- Head'
                 joints.append('head_j0')
                 joints.append('head_j1')
                 joints.append('head_j2')
@@ -242,85 +258,95 @@ if __name__ == '__main__':
             pub = rospy.Publisher("/joint_states", JointState)
             loop_rate = rospy.Rate(50.0)
             header = Header(0, rospy.Time.now(), '0')
+            positions = [0.0]*len(joints)
             print 'Entering ROS Node'
             while not rospy.is_shutdown() and server_started:
                 try:
                     header = Header(0, rospy.Time.now(), '0')
-                    positions = []
                     # Omnibase state
                     proxy.step()
+                    i=0
                     if omni:
                         #omni_torque = omni.get_steer_torques()
                         omni_pos = omni.get_local_position()
                         omni_x = omni_pos[0]
                         omni_y = omni_pos[1]
                         omni_yaw = math.radians(omni_pos[2])
-                        positions.append(omni_x)
-                        positions.append(omni_y)
-                        positions.append(omni_yaw)
+                        positions[i]=(omni_x); i=i+1
+                        positions[i]=(omni_y); i=i+1
+                        positions[i]=(omni_yaw); i=i+1
                     if zlift:
                         if calib_zlift:
                             zlift_z = zlift.get_pos_m()
                         else:
                             zlift_z = .5
-                        positions.append(zlift_z-(0.32))#sol->haut_base + haut_base->capteur(repère 0.0)
+                        positions[i]=(zlift_z-(0.32)); i=i+1#sol->haut_base + haut_base->capteur(repère 0.0)
                     if right_arm:
                         # Arm joint states
                         right_arm_th_rad = bot.get_theta_rad('right_arm')
-                        for i in xrange(0,bot.get_num_dof('right_arm')):
-                            positions.append(right_arm_th_rad[i])
+                        for j in xrange(0,bot.get_num_dof('right_arm')):
+                            positions[i]=(right_arm_th_rad[j]); i=i+1
                     if left_arm:
                         left_arm_th_rad = bot.get_theta_rad('left_arm')
-                        for i in xrange(0,bot.get_num_dof('left_arm')):
-                            positions.append(left_arm_th_rad[i])
+                        for j in xrange(0,bot.get_num_dof('left_arm')):
+                            positions[i]=(left_arm_th_rad[j]); i=i+1
                     if right_hand:
                         # Hand joint states
                         th = right_hand.get_theta_rad()
                         #Thumb
-                        positions.append(-th[0]+1.57) #0
-                        positions.append(th[1] * flex_factor_thumb[0])
-                        positions.append(th[1] * flex_factor_thumb[1])
+                        positions[i]=-th[0]+1.57 ; i=i+1
+                        positions[i]=th[1] * flex_factor_thumb[0] ; i=i+1
+                        positions[i]=th[1] * flex_factor_thumb[1] ; i=i+1
+                        positions[i]=th[1] * flex_factor_thumb[2] ; i=i+1
                         #Index
-                        positions.append(th[2] * flex_factor_index[0])
-                        positions.append(th[2] * flex_factor_index[1])
-                        positions.append(th[2] * flex_factor_index[2])
+                        positions[i]=th[2] * flex_factor_index[0] ; i=i+1
+                        positions[i]=th[2] * flex_factor_index[1] ; i=i+1
+                        positions[i]=th[2] * flex_factor_index[2] ; i=i+1
+                        positions[i]=th[2] * flex_factor_index[3] ; i=i+1
                         #Ring
-                        positions.append(th[3] * flex_factor_ring[0])
-                        positions.append(th[3] * flex_factor_ring[1])
-                        positions.append(th[3] * flex_factor_ring[2])
+                        positions[i]=th[3] * flex_factor_ring[0] ; i=i+1
+                        positions[i]=th[3] * flex_factor_ring[1] ; i=i+1
+                        positions[i]=th[3] * flex_factor_ring[2] ; i=i+1
+                        positions[i]=th[3] * flex_factor_ring[3] ; i=i+1
                         #Pinkie
-                        positions.append(th[4] * flex_factor_pinky[0])
-                        positions.append(th[4] * flex_factor_pinky[1])
-                        positions.append(th[4] * flex_factor_pinky[2])
+                        positions[i]=th[4] * flex_factor_pinky[0] ; i=i+1
+                        positions[i]=th[4] * flex_factor_pinky[1] ; i=i+1
+                        positions[i]=th[4] * flex_factor_pinky[2] ; i=i+1
+                        positions[i]=th[4] * flex_factor_pinky[3] ; i=i+1
                     if left_hand:
                         # Hand joint states
                         th = left_hand.get_theta_rad()
                         #Thumb
-                        positions.append(-th[0]+1.57) #0
-                        positions.append(th[1] * flex_factor_thumb[0])
-                        positions.append(th[1] * flex_factor_thumb[1])
+                        positions[i]=-th[0]+1.57 ; i=i+1
+                        positions[i]=th[1] * flex_factor_thumb[0] ; i=i+1
+                        positions[i]=th[1] * flex_factor_thumb[1] ; i=i+1
+                        positions[i]=th[1] * flex_factor_thumb[2] ; i=i+1
                         #Index
-                        positions.append(th[2] * flex_factor_index[0])
-                        positions.append(th[2] * flex_factor_index[1])
-                        positions.append(th[2] * flex_factor_index[2])
+                        positions[i]=th[2] * flex_factor_index[0] ; i=i+1
+                        positions[i]=th[2] * flex_factor_index[1] ; i=i+1
+                        positions[i]=th[2] * flex_factor_index[2] ; i=i+1
+                        positions[i]=th[2] * flex_factor_index[3] ; i=i+1
                         #Ring
-                        positions.append(th[3] * flex_factor_ring[0])
-                        positions.append(th[3] * flex_factor_ring[1])
-                        positions.append(th[3] * flex_factor_ring[2])
+                        positions[i]=th[3] * flex_factor_ring[0] ; i=i+1
+                        positions[i]=th[3] * flex_factor_ring[1] ; i=i+1
+                        positions[i]=th[3] * flex_factor_ring[2] ; i=i+1
+                        positions[i]=th[3] * flex_factor_ring[3] ; i=i+1
                         #Pinkie
-                        positions.append(th[4] * flex_factor_pinky[0])
-                        positions.append(th[4] * flex_factor_pinky[1])
-                        positions.append(th[4] * flex_factor_pinky[2])
+                        positions[i]=th[4] * flex_factor_pinky[0] ; i=i+1
+                        positions[i]=th[4] * flex_factor_pinky[1] ; i=i+1
+                        positions[i]=th[4] * flex_factor_pinky[2] ; i=i+1
+                        positions[i]=th[4] * flex_factor_pinky[3] ; i=i+1
                     if head:
-                        # Head state
-                        all_head_joints = bot.get_theta_rad('head')
-                        for i in xrange(len(all_head_joints)-1):
-                            positions.append(all_head_joints[i])
-                        eye_lids_angle_rad = all_head_joints[-1]-m3t.deg2rad(35.0)
-                        for i in xrange(4):
-                            positions.append(eye_lids_angle_rad)
+		                  # Head state
+		                  all_head_joints = bot.get_theta_rad('head')
+		                  for j in xrange(0,len(all_head_joints)-1):
+		                  	positions[i]=all_head_joints[j] ; i=i+1
+		                  if len(all_head_joints)>0:
+		                  	eye_lids_angle_rad = all_head_joints[-1]-m3t.deg2rad(35.0)
+		                  	for j in xrange(4):
+		                  		positions[i]=eye_lids_angle_rad ; i=i+1
                     
-                    pub.publish(JointState(header, joints, positions, [0] * len(positions), [0] * len(positions)))
+                    pub.publish(JointState(header, joints, positions, [], []))
                     loop_rate.sleep()
                 except Exception,e:
                     if isinstance(e,rospy.ROSInterruptException):
@@ -328,6 +354,7 @@ if __name__ == '__main__':
                         proxy.stop()
                         exit()
                     else:
+                    	print 'Catching exception :',e
                         print 'M3rt serveur seems to be down, waiting for it to reboot : ',e
                         server_started= False
         except Exception,e:

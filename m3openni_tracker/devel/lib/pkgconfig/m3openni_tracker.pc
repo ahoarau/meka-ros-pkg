@@ -1,8 +1,0 @@
-prefix=/home/meka/mekabot/meka-ros-pkg/m3openni_tracker/devel
-
-Name: m3openni_tracker
-Description: Description of m3openni_tracker
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/meka/mekabot/meka-ros-pkg/m3openni_tracker/devel/lib 
-Requires: 
