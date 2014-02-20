@@ -35,7 +35,7 @@
 
     <!-- Shoulder pan -->
     <joint name="left_arm_j0" type="revolute">
-      <axis xyz="0 -1 0" />
+      <axis xyz="0 1 0" />
       <insert_block name="origin" /> <!-- transform from parent link to this joint frame -->
       <parent link="${parent}"/>
       <child link="shoulderupper_LEFT"/>

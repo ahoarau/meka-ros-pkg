@@ -82,15 +82,16 @@
 
   <!-- john added transmissions -->
   <xacro:m3_r_arm_transmission side="r" reflect="1" parent="upper"/>
+  <xacro:m3_l_arm_transmission side="r" reflect="1" parent="upper"/>
   <!--</m3_r_hand_transmission-->
   
   <xacro:m3_r_hand side="r" reflect="1" parent="handmount_RIGHT">
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
   </xacro:m3_r_hand>
   
-  <!--<m3_l_hand side="l" reflect="1" parent="handmount_LEFT">
+  <xacro:m3_l_hand side="l" reflect="1" parent="handmount_LEFT">
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-  </m3_l_hand>-->
+  </xacro:m3_l_hand>
  
 
   <xacro:m3_head side="r" reflect="1" parent="upper">
@@ -101,9 +102,9 @@
     <origin xyz="0.0 -0.18465 0.2337" rpy="0 0 0" />
   </xacro:m3_r_arm>
 
- <!--<m3_l_arm side="l" reflect="1" parent="upper">
+ <xacro:m3_l_arm side="l" reflect="1" parent="upper">
     <origin xyz="0.0 0.18465 0.2337" rpy="0 0 0" />
-  </m3_l_arm>-->
+  </xacro:m3_l_arm>
 
   
 
