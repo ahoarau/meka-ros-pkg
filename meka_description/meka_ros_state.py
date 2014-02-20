@@ -38,10 +38,6 @@ import time
 import math
 import numpy as npy
 import PyKDL as kdl
-from compiler.pycodegen import EXCEPT
-from m3.toolbox_core import M3Exception
-from bzrlib.transport import Server
-
 
 def get_zlift(proxy):
     assert isinstance(proxy,m3p.M3RtProxy)
