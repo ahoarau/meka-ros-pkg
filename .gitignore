@@ -5,3 +5,6 @@ build
 .Trash*
 *.pyc
 *~
+.project
+.pydevproject
+.settings/
