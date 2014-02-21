@@ -161,8 +161,8 @@ if __name__ == '__main__':
             
             ## HACK
             ndof_arm = 7
-            ndof_hand = 5
-            ndof_head = 8
+            ndof_hand = 16
+            ndof_head = 11
             ndof_zlift = 1
             ndof_base = 3
             # Calibrate ZLift
@@ -355,13 +355,18 @@ if __name__ == '__main__':
                         idx = i
                         # Head state
                         all_head_joints = bot.get_theta_rad('head')
-                        eye_lids_angle_rad = 0.0
+                        eye_lids_angle_rad = m3t.deg2rad(75.0)
                         for j in xrange(0,len(all_head_joints)-1):
                             positions[idx]=all_head_joints[j] ; idx=idx+1
                         if len(all_head_joints)>0:
                             eye_lids_angle_rad = all_head_joints[-1]-m3t.deg2rad(35.0)
-                        for j in xrange(4):
-                            positions[idx]=eye_lids_angle_rad ; idx=idx+1
+                        for j in xrange(1,5):
+                            positions[-idx]=eye_lids_angle_rad ;
+ 		    else:
+			eye_lids_angle_rad = m3t.deg2rad(75.0)
+ 			for j in xrange(1,5):
+				positions[-j] = eye_lids_angle_rad
+
                     
                     pub.publish(JointState(header, joints, positions, [], []))
                     loop_rate.sleep()
