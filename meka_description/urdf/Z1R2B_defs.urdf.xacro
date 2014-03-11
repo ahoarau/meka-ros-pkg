@@ -75,6 +75,12 @@
 	<parent link="zlift_link" />
 	<child link="upper" />
     </joint>
+    <joint name="origin_joint" type="fixed">
+	<origin xyz="0 0 0.2337" rpy="0 0 0" />
+	<parent link="upper" />
+	<child link="T0" />
+    </joint>
+    <link name="T0"/>
   </macro>
 
 
