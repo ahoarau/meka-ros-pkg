@@ -361,7 +361,7 @@ if __name__ == '__main__':
                         if len(all_head_joints)>0:
                             eye_lids_angle_rad = all_head_joints[-1]-m3t.deg2rad(35.0)
                         for j in xrange(1,5):
-                            positions[-j]=eye_lids_angle_rad ;
+                            positions[-j]=-eye_lids_angle_rad ;
  		    else:
 			eye_lids_angle_rad = m3t.deg2rad(75.0)
  			for j in xrange(1,5):
