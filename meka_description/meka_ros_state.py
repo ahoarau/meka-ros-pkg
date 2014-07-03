@@ -25,7 +25,7 @@ import os
 import rospy
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Header
-import m3.nanokontrol as m3k
+
 import m3.gui as m3g
 import m3.rt_proxy as m3p
 import m3.humanoid as m3h
