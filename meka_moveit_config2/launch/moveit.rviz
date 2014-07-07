@@ -4,9 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Grid1
         - /MotionPlanning1
-        - /MotionPlanning1/Planning Request1
         - /MotionPlanning1/Planned Path1
       Splitter Ratio: 0.74256
     Tree Height: 448
@@ -763,22 +761,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 5.34227
+      Distance: 2.99156
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.635438
-        Y: 1.18663
-        Z: 1.37358e-06
+        X: 0.347166
+        Y: 0.0675437
+        Z: 1.53915e-06
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.089797
+      Pitch: 0.424797
       Target Frame: world
       Value: XYOrbit (rviz)
-      Yaw: 0.781755
+      Yaw: 0.521755
     Saved: ~
 Window Geometry:
   Displays:
@@ -794,5 +792,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1871
-  X: 41
-  Y: -4
+  X: 49
+  Y: 24
