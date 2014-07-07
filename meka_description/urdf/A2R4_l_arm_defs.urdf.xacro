@@ -191,7 +191,7 @@
 
     <joint name="left_arm_j4" type="revolute">
 	    <axis xyz="0 0 -1" />
-      <limit effort="4" velocity="${150*M_PI/180}" lower="${-19.7*M_PI/180}" upper="${199.7*M_PI/180}" /> 
+      <limit effort="4" velocity="${150*M_PI/180}" lower="${-190.7*M_PI/180}" upper="${19.7*M_PI/180}" /> 
       <origin xyz="0 0 -0.27747" rpy="0 0 0" />
       <parent link="elbowclevis_LEFT"/>
       <child link="wrist_LEFT"/>
@@ -274,7 +274,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <parent link="w_differential_LEFT"/>
       <child link="handmount_LEFT"/>
-      <dynamics damping="1.0"/>
+      <dynamics damping="0.1"/>
     </joint>
     <link name="handmount_LEFT">
 
