@@ -3,7 +3,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <macro name="m3_r_shoulder_transmission" params="side parent reflect">
+  <xacro:macro name="m3_r_shoulder_transmission" params="side parent reflect">
     <!-- Shoulder pan -->
     <transmission name="m3joint_${R_ARM}_t0" type="pr2_mechanism_model/SimpleTransmission">
       <actuator name="m3joint_${R_ARM}_a0" />
@@ -22,12 +22,12 @@
       <joint name="m3joint_${R_ARM}_j2" />
       <mechanicalReduction>1</mechanicalReduction>
     </transmission>
-  </macro>
+  </xacro:macro>
 
 
 
   <!-- ============================   Upper Arm   ============================ -->
-  <macro name="m3_r_upper_arm_transmission" params="side parent reflect">
+  <xacro:macro name="m3_r_upper_arm_transmission" params="side parent reflect">
     <transmission name="m3joint_${R_ARM}_t3" type="pr2_mechanism_model/SimpleTransmission">
       <actuator name="m3joint_${R_ARM}_a3" />
       <joint name="m3joint_${R_ARM}_j3" />
@@ -39,12 +39,12 @@
       <joint name="m3joint_${R_ARM}_j4" />
       <mechanicalReduction>1</mechanicalReduction>
     </transmission>
-  </macro>
+  </xacro:macro>
 
 
   <!-- ============================   Forearm   ============================ -->
 
-  <macro name="m3_r_forearm_transmission" params="side parent reflect">
+  <xacro:macro name="m3_r_forearm_transmission" params="side parent reflect">
     <transmission name="m3joint_${R_ARM}_t5" type="pr2_mechanism_model/SimpleTransmission">
       <actuator name="m3joint_${R_ARM}_a5" />
       <joint name="m3joint_${R_ARM}_j5" />
@@ -56,15 +56,15 @@
       <joint name="m3joint_${R_ARM}_j6" />
       <mechanicalReduction>1</mechanicalReduction>
     </transmission>
-  </macro>
+  </xacro:macro>
 
 
 
-  <macro name="m3_r_arm_transmission" params="side parent reflect">
+  <xacro:macro name="m3_r_arm_transmission" params="side parent reflect">
     <m3_r_shoulder_transmission side="${side}" reflect="${reflect}" parent="${parent}"/>
     <m3_r_upper_arm_transmission side="${side}" reflect="${reflect}" parent="bicep_RIGHT" />
     <m3_r_forearm_transmission side="${side}" reflect="${reflect}" parent="wrist_RIGHT" />
-  </macro>
+  </xacro:macro>
 
 
 </robot>

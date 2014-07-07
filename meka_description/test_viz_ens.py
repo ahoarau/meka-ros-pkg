@@ -21,7 +21,7 @@
 
 import time
 import os
-import roslib; roslib.load_manifest('meka_description')
+#import roslib; roslib.load_manifest('meka_description')
 import rospy
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Header

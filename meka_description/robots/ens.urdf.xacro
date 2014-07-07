@@ -19,7 +19,7 @@
  <link name="base_link" />
  <!-- Solid Base -->
  <joint name="base_joint" type="fixed">
-  <origin xyz="0 0 1" rpy="0 0 0" />
+  <origin xyz="0 0 0" rpy="0 0 0" />
   <parent link="world" />
   <child link="base_link" />
  </joint>
@@ -61,6 +61,8 @@
 
   <!-- john added transmissions -->
   <xacro:include filename="$(find meka_description)/transmissions/A2R4_r_arm_defs.transmission.xacro" />
+
+  <xacro:include filename="$(find meka_description)/transmissions/A2R4_l_arm_defs.transmission.xacro" />
   <!--<xacro:include filename="$(find meka_description)/transmissions/H2R2_r_hand_defs.transmission.xacro" />-->
   <!--<xacro:include filename="$(find meka_description)/transmissions/S2R1_head_defs.transmission.xacro" />-->
 
@@ -81,11 +83,11 @@
 
 
   <!-- john added transmissions -->
-  <xacro:m3_r_arm_transmission side="r" reflect="1" parent="upper"/>
-  <xacro:m3_l_arm_transmission side="r" reflect="1" parent="upper"/>
+  <xacro:m3_r_arm_transmission side="r" reflect="-1" parent="upper"/>
+  <xacro:m3_l_arm_transmission side="l" reflect="1" parent="upper"/>
   <!--</m3_r_hand_transmission-->
   
-  <xacro:m3_r_hand side="r" reflect="1" parent="handmount_RIGHT">
+  <xacro:m3_r_hand side="r" reflect="-1" parent="handmount_RIGHT">
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
   </xacro:m3_r_hand>
   
@@ -98,7 +100,7 @@
     <origin xyz="0.0 0.0 0.31155" rpy="0 0 0" />
   </xacro:m3_head>
 
- <xacro:m3_r_arm side="r" reflect="1" parent="upper">
+ <xacro:m3_r_arm side="r" reflect="-1" parent="upper">
     <origin xyz="0.0 -0.18465 0.2337" rpy="0 0 0" />
   </xacro:m3_r_arm>
 

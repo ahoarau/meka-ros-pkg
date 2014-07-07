@@ -36,7 +36,7 @@
       <collision>
 	      <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
 	      <geometry name="palm_collision_left">
-		      <mesh filename="package://${MESH_COLL}/H2R3/H2R3_LT8_palm_left.dae" />
+		      <mesh filename="package://${MESH_COLL}/H2R3/H2R3_LT8_palm_left.stl" />
 	      </geometry>
       </collision>
     </link>

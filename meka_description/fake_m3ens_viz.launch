@@ -11,7 +11,7 @@
     <param name="publish_frequency" type="double" value="50.0" />
     <param name="tf_prefix" type="string" value="" />
   </node>
-<node pkg="meka_description" type="meka_ros_state.py" output="screen" name="joint_publisher"/>
+<node pkg="meka_description" type="fake_meka_ros_state.py" output="screen" name="joint_publisher"/>
 <!-- Zero robot tf, kinect and head -->
 <include file="$(find meka_description)/meka_additional_transforms.launch"/>
 </launch>
