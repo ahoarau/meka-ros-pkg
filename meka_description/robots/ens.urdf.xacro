@@ -11,8 +11,8 @@
  <property name="MESH" value="meka_description/meshes/mid_res" />
  <property name="MESH_COLL" value="meka_description/meshes/low_res" />
 
-<!-- generic simulator_gazebo plugins for starting mechanism control, ros time, ros battery -->
- <xacro:include filename="$(find meka_description)/gazebo/gazebo.urdf.xacro" />
+<!-- generic simulator_gazebo plugins for starting mechanism control, ros time, ros battery >
+ <xacro:include filename="$(find meka_description)/gazebo/gazebo.urdf.xacro" /-->
  <!--<xacro:include filename="$(find meka_description)/transmissions/uta.transmission.xacro" />-->
  <link name="world" />
 
@@ -59,10 +59,10 @@
 
 
 
-  <!-- john added transmissions -->
+  <!-- john added transmissions >
   <xacro:include filename="$(find meka_description)/transmissions/A2R4_r_arm_defs.transmission.xacro" />
 
-  <xacro:include filename="$(find meka_description)/transmissions/A2R4_l_arm_defs.transmission.xacro" />
+  <xacro:include filename="$(find meka_description)/transmissions/A2R4_l_arm_defs.transmission.xacro" /-->
   <!--<xacro:include filename="$(find meka_description)/transmissions/H2R2_r_hand_defs.transmission.xacro" />-->
   <!--<xacro:include filename="$(find meka_description)/transmissions/S2R1_head_defs.transmission.xacro" />-->
 
@@ -82,9 +82,9 @@
   
 
 
-  <!-- john added transmissions -->
+  <!-- john added transmissions >
   <xacro:m3_r_arm_transmission side="r" reflect="-1" parent="upper"/>
-  <xacro:m3_l_arm_transmission side="l" reflect="1" parent="upper"/>
+  <xacro:m3_l_arm_transmission side="l" reflect="1" parent="upper"/-->
   <!--</m3_r_hand_transmission-->
   
   <xacro:m3_r_hand side="r" reflect="-1" parent="handmount_RIGHT">
