@@ -10,13 +10,6 @@
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
     <group name="right_arm">
-        <link name="shoulderupper_RIGHT" />
-        <link name="shoulderpitch_RIGHT" />
-        <link name="bicep_RIGHT" />
-        <link name="elbowclevis_RIGHT" />
-        <link name="wrist_RIGHT" />
-        <link name="w_differential_RIGHT" />
-        <link name="handmount_RIGHT" />
         <joint name="right_arm_j0" />
         <joint name="right_arm_j1" />
         <joint name="right_arm_j2" />
@@ -39,13 +32,6 @@
         <joint name="head_j7_lt_eyelid_bottom" />
     </group>
     <group name="left_arm">
-        <link name="shoulderupper_LEFT" />
-        <link name="shoulderpitch_LEFT" />
-        <link name="bicep_LEFT" />
-        <link name="elbowclevis_LEFT" />
-        <link name="wrist_LEFT" />
-        <link name="w_differential_LEFT" />
-        <link name="handmount_LEFT" />
         <joint name="left_arm_j0" />
         <joint name="left_arm_j1" />
         <joint name="left_arm_j2" />
