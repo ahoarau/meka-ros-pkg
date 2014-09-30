@@ -1,6 +1,6 @@
 <launch>
 <!-- Robot parameter server -->
-<rosparam file="$(env M3_ROBOT)/ros_config/kinect/m3kinect_params.yml" command="load" />
+<rosparam file="$(find meka_description)/ros_config/kinect/m3kinect_params.yml" command="load" />
 <!-- ROBOT Description (URDF Model) -->
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find meka_description)/robots/ens.urdf.xacro'" />
 
