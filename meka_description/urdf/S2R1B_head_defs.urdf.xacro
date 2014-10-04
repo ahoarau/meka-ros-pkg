@@ -232,8 +232,18 @@
 	      </geometry>
       </collision>
     </link>
-    
+
+
+<joint name="head_j7" type="revolute">
+      <axis xyz="0 1 0" />
+      <limit effort="100" velocity="${1600*M_PI/180}" lower="${2.0*M_PI/180}" upper="${68.0*M_PI/180}" /> 
+      <origin xyz="0 0.008 -0.025" rpy="0 0 0" />
+      <parent link="right_eye"/>
+      <child link="rt_eyelid_top"/>
+</joint>
+
     <joint name="head_j7_rt_eyelid_top" type="revolute">
+<mimic joint="head_j7" multiplier="1.0" offset="-${35*M_PI/180}"/>
 	    <axis xyz="0 -1 0" />
       <limit effort="100" velocity="${1600*M_PI/180}" lower="${2.0*M_PI/180}" upper="${68.0*M_PI/180}" /> 
       <origin xyz="0 0.0 0" rpy="0 0.785 0" />
@@ -257,8 +267,11 @@
 	      </geometry>
       </collision>
     </link>
-       
+    
+
+
     <joint name="head_j7_rt_eyelid_bottom" type="revolute">
+	<mimic joint="head_j7" multiplier="1.0" offset="-${35*M_PI/180}"/>
 	    <axis xyz="0 1 0" />
        <limit effort="100" velocity="${1600*M_PI/180}" lower="${2.0*M_PI/180}" upper="${68.0*M_PI/180}" /> 
       <origin xyz="0 0.0 0" rpy="0 -0.785 0" />
@@ -284,6 +297,7 @@
     </link>
 
     <joint name="head_j7_lt_eyelid_top" type="revolute">
+<mimic joint="head_j7" multiplier="1.0" offset="-${35*M_PI/180}"/>
 	    <axis xyz="0 -1 0" />
        <limit effort="100" velocity="${1600*M_PI/180}" lower="${2.0*M_PI/180}" upper="${68.0*M_PI/180}" />  
       <origin xyz="0 0.0 0" rpy="0 0.785 0" />
@@ -309,6 +323,7 @@
     </link>
        
     <joint name="head_j7_lt_eyelid_bottom" type="revolute">
+<mimic joint="head_j7" multiplier="1.0" offset="-${35*M_PI/180}"/>
 	    <axis xyz="0 1 0" />
        <limit effort="100" velocity="${1600*M_PI/180}" lower="${2.0*M_PI/180}" upper="${68.0*M_PI/180}" />  
       <origin xyz="0 0.0 0" rpy="0 -0.785 0" />
@@ -333,7 +348,7 @@
       </collision>
     </link>
     
-    
+ <!-- Ears    
      <joint name="head_j8" type="revolute">
 	    <axis xyz="0 0 1" />
       <limit effort="100" velocity="${1600*M_PI/180}" lower="${-150.0*M_PI/180}" upper="${150.0*M_PI/180}" /> 
@@ -436,6 +451,7 @@
 	      </geometry>
       </collision>
     </link>
+/-->
 </macro>
 
 
