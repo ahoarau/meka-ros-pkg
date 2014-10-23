@@ -256,7 +256,7 @@ if __name__ == '__main__':
             joints.append('head_j7_lt_eyelid_bottom')
                
             rospy.init_node("m3_joint_state_publisher")
-            pub = rospy.Publisher("/joint_states", JointState)
+            pub = rospy.Publisher("/joint_states", JointState,queue_size=1)
             loop_rate = rospy.Rate(50.0)
             header = Header(0, rospy.Time.now(), '0')
             positions = [0.0]*len(joints)
@@ -359,9 +359,9 @@ if __name__ == '__main__':
                         for j in xrange(0,len(all_head_joints)-1):
                             positions[idx]=all_head_joints[j] ; idx=idx+1
                         if len(all_head_joints)>0:
-                            eye_lids_angle_rad = all_head_joints[-1]-m3t.deg2rad(35.0)
+                            eye_lids_angle_rad = all_head_joints[-1]
                         for j in xrange(1,5):
-                            positions[-j]=eye_lids_angle_rad ;
+                            positions[-j]=eye_lids_angle_rad + m3t.deg2rad(35);
  		    else:
 			eye_lids_angle_rad = m3t.deg2rad(75.0)
  			for j in xrange(1,5):
