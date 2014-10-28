@@ -284,7 +284,7 @@ if __name__ == '__main__':
                         zlift_z = zlift.get_pos_m()
                     else:
                         zlift_z = .5
-                        positions[idx]=(zlift_z-(0.32)); #sol->haut_base + haut_base->capteur(repère 0.0)
+                    positions[idx]=(zlift_z-(0.32)); #sol->haut_base + haut_base->capteur(repère 0.0)
                         
                     i=i+ndof_zlift
                     if right_arm:
@@ -370,26 +370,26 @@ if __name__ == '__main__':
                     
                     pub.publish(JointState(header, joints, positions, [], []))
                     loop_rate.sleep()
+                except KeyboardInterrupt:
+                    break
+                except rospy.ROSException:
+                    break
                 except Exception,e:
-                    if isinstance(e,rospy.ROSInterruptException) or isinstance(e,KeyboardInterrupt):
-                        proxy.step()
-                        proxy.stop()
-                        exit()
-                    else:
-                    	print 'Catching exception :',e
-                        print 'M3rt serveur seems to be down, waiting for it to reboot : ',e
-                        server_started= False
+                    print 'Catching exception:',e
+                    print 'M3rt serveur seems to be down, waiting for it to reboot : ',e
+                    server_started= False
+        except KeyboardInterrupt:
+            break
+        except rospy.ROSException:
+            break
         except Exception,e:
-            if isinstance(e,rospy.ROSInterruptException) or isinstance(e,KeyboardInterrupt):
-                print 'Exiting'
-                if proxy:
-                    proxy.step()
-                    proxy.stop()
-                exit()
             print 'Catching exception :',e
             print 'Waiting for the M3 server to be launched'
-            time.sleep(1.0)
-
+    time.sleep(1.0)
+    if proxy:
+        proxy.step()
+        proxy.stop()
+    exit()
 
 
 
