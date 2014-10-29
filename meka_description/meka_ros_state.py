@@ -28,6 +28,8 @@ from std_msgs.msg import Header
 
 import m3.gui as m3g
 import m3.rt_proxy as m3p
+import m3.arm as m3a
+import m3.hand as m3ha
 import m3.humanoid as m3h
 import m3.omnibase as m3o
 import m3.toolbox as m3t
@@ -83,10 +85,9 @@ def get_right_hand(proxy):
     ## Returns the right hand object, None if none or more is found
     right_hand = None
     try:
-        right_hand_name = m3t.get_right_hand_name()
-        if right_hand_name:
-            right_hand = m3.hand.M3Hand(right_hand_name)   
-            proxy.subscribe_status(right_hand)
+        right_hand_name = proxy.get_available_components('m3hand_mh16')
+        right_hand = m3.hand.M3Hand(right_hand_name[0])   
+        proxy.subscribe_status(right_hand)
     except Exception,e:
         print 'No right hand found : ',e
         right_hand = None
@@ -97,11 +98,9 @@ def get_left_hand(proxy):
     ## Returns the left hand object, None if none or more is found
     left_hand = None
     try:
-        left_hand_name = m3t.get_left_hand_name()
-        if left_hand_name:
-            print 'left_hand name : ', left_hand_name
-            left_hand = m3.hand.M3Hand(left_hand_name)   
-            proxy.subscribe_status(left_hand)
+        left_hand_name = proxy.get_available_components('m3hand_mh28')
+        left_hand = m3.hand.M3Hand(left_hand_name[0])   
+        proxy.subscribe_status(left_hand)
     except Exception,e:
         print 'No left hand found : ',e
         left_hand = None
@@ -110,23 +109,49 @@ def get_head(proxy):
     assert isinstance(proxy,m3p.M3RtProxy)
     csp_rt = None
     try:
-        csp_name=proxy.get_available_components('m3head_s2csp_ctrl')
-        csp_rt=m3csp.M3HeadS2CSPCtrl(csp_name[0])
+        csp_name=proxy.get_available_components('m3head_ms4')
+        csp_rt=m3.head.M3Head(csp_name[0])
         proxy.subscribe_status(csp_rt)
     except Exception,e:
         print 'No csp head found : ',e
         csp_rt = None
     return csp_rt
+    
+def get_right_arm(proxy):
+    assert isinstance(proxy,m3p.M3RtProxy)
+    right_arm = None
+    try:
+        right_arm_name=proxy.get_available_components('m3arm_ma17')
+        right_arm=m3a.M3Arm(right_arm_name[0])
+        proxy.subscribe_status(right_arm)
+    except Exception,e:
+        print 'No right_arm head found : ',e
+        right_arm = None
+    return right_arm
+
+def get_left_arm(proxy):
+    assert isinstance(proxy,m3p.M3RtProxy)
+    left_arm = None
+    try:
+        left_arm_name=proxy.get_available_components('m3arm_ma20')
+        left_arm=m3a.M3Arm(left_arm_name[0])
+        proxy.subscribe_status(left_arm)
+    except Exception,e:
+        print 'No left_arm head found : ',e
+        left_arm = None
+    return left_arm
+
 if __name__ == '__main__':
     server_started = False
     proxy = m3p.M3RtProxy()
     while not server_started:
         try:
             proxy.start()
+            print proxy.get_available_components()
             server_started= True
             
-            right_arm = None
-            left_arm  = None
+            right_arm = get_right_arm(proxy)
+            left_arm  = get_left_arm(proxy)
             head        = get_head(proxy)
             zlift       = get_zlift(proxy)
             omni        = get_omnibase(proxy)
@@ -136,8 +161,8 @@ if __name__ == '__main__':
             left_hand   = get_left_hand(proxy)
             if bot:
                 all_chains = bot.get_available_chains()
-                right_arm   = 'right_arm' in all_chains
-                left_arm   = 'left_arm' in all_chains
+                #right_arm   = 'right_arm' in all_chains
+                #left_arm   = 'left_arm' in all_chains
                 #head = 'head' in all_chains
                 
             print '*************** Available components ***************'
@@ -147,12 +172,12 @@ if __name__ == '__main__':
                 print '- Omni'#,omni
             if bot:
                 print '- Bot'#,bot
-                if right_arm:
-                    print '- Right Arm'
-                if left_arm:
-                    print '- Left Arm'
-                if head:
-                    print '- Head'#,head
+            if right_arm:
+                print '- Right Arm'
+            if left_arm:
+                print '- Left Arm'
+            if head:
+                print '- Head'#,head
             if right_hand:
                 print '- Right hand'#,right_hand
             if left_hand:
@@ -290,15 +315,15 @@ if __name__ == '__main__':
                     if right_arm:
                         idx = i
                         # Arm joint states
-                        right_arm_th_rad = bot.get_theta_rad('right_arm')
-                        for j in xrange(0,bot.get_num_dof('right_arm')):
+                        right_arm_th_rad = right_arm.get_theta_rad()
+                        for j in xrange(0,right_arm.get_num_dof()):
                             positions[idx]=(right_arm_th_rad[j]); idx=idx+1
                     i=i+ndof_arm
                     if left_arm:
                         idx = i
                         # Arm joint states
-                        left_arm_th_rad = bot.get_theta_rad('left_arm')
-                        for j in xrange(0,bot.get_num_dof('left_arm')):
+                        left_arm_th_rad = left_arm.get_theta_rad()
+                        for j in xrange(0,left_arm.get_num_dof()):
                             positions[idx]=(left_arm_th_rad[j]); idx=idx+1
                     i=i+ndof_arm
                     if right_hand:
@@ -354,7 +379,7 @@ if __name__ == '__main__':
                     if head:
                         idx = i
                         # Head state
-                        all_head_joints = bot.get_theta_rad('head')
+                        all_head_joints = head.get_theta_rad()
                         eye_lids_angle_rad = m3t.deg2rad(75.0)
                         for j in xrange(0,len(all_head_joints)-1):
                             positions[idx]=all_head_joints[j] ; idx=idx+1
