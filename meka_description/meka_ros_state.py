@@ -119,9 +119,9 @@ def get_head(proxy):
     return csp_rt
 if __name__ == '__main__':
     server_started = False
+    proxy = m3p.M3RtProxy()
     while not server_started:
         try:
-            proxy = m3p.M3RtProxy()
             proxy.start()
             server_started= True
             
@@ -188,10 +188,10 @@ if __name__ == '__main__':
             if zlift:
                 calib_zlift = zlift.get_encoder_calibrated()
             ndof_finger = 3
-            flex_factor_index = [0.3] * (ndof_finger+1)
-            flex_factor_ring = [0.3] * (ndof_finger+1)
-            flex_factor_pinky = [0.3] * (ndof_finger+1)
-            flex_factor_thumb = [0.3] * (ndof_finger)
+            flex_factor_index = [0.4] * (ndof_finger+1)
+            flex_factor_ring = [0.4] * (ndof_finger+1)
+            flex_factor_pinky = [0.4] * (ndof_finger+1)
+            flex_factor_thumb = [0.4] * (ndof_finger)
             joints = []
             joints.append('X')    
             joints.append('Y')   
@@ -378,6 +378,7 @@ if __name__ == '__main__':
                     print 'Catching exception:',e
                     print 'M3rt serveur seems to be down, waiting for it to reboot : ',e
                     server_started= False
+                    time.sleep(1.0)
         except KeyboardInterrupt:
             break
         except rospy.ROSException:
@@ -385,7 +386,7 @@ if __name__ == '__main__':
         except Exception,e:
             print 'Catching exception :',e
             print 'Waiting for the M3 server to be launched'
-    time.sleep(1.0)
+            time.sleep(1.0)
     if proxy:
         proxy.step()
         proxy.stop()
