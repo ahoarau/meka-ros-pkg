@@ -46,8 +46,7 @@ def get_zlift(proxy):
     ## Returns the zlift object, None if none or more is found
     zlift = None
     try:
-        zlift_names = proxy.get_available_components('m3joint_zlift')
-        zlift = m3z.M3JointZLift(zlift_names[0])
+        zlift = m3z.M3JointZLift('m3joint_mz2_j0')
         proxy.subscribe_status(zlift)
     except Exception,e:
         print 'Zlift not found : ',e
@@ -59,8 +58,7 @@ def get_omnibase(proxy):
     ## Returns the omnibase object, None if none or more is found
     omni = None
     try:
-        base_names = proxy.get_available_components('m3omnibase')
-        omni = m3o.M3OmniBase(base_names[0])
+        omni = m3o.M3OmniBase('m3omnibase_mb2')
         proxy.subscribe_status(omni)
     except Exception,e:
         print 'Omni not found : ',e
@@ -85,8 +83,7 @@ def get_right_hand(proxy):
     ## Returns the right hand object, None if none or more is found
     right_hand = None
     try:
-        right_hand_name = proxy.get_available_components('m3hand_mh16')
-        right_hand = m3.hand.M3Hand(right_hand_name[0])   
+        right_hand = m3.hand.M3Hand('m3hand_mh16')   
         proxy.subscribe_status(right_hand)
     except Exception,e:
         print 'No right hand found : ',e
@@ -98,8 +95,7 @@ def get_left_hand(proxy):
     ## Returns the left hand object, None if none or more is found
     left_hand = None
     try:
-        left_hand_name = proxy.get_available_components('m3hand_mh28')
-        left_hand = m3.hand.M3Hand(left_hand_name[0])   
+        left_hand = m3.hand.M3Hand('m3hand_mh28')   
         proxy.subscribe_status(left_hand)
     except Exception,e:
         print 'No left hand found : ',e
@@ -109,8 +105,7 @@ def get_head(proxy):
     assert isinstance(proxy,m3p.M3RtProxy)
     csp_rt = None
     try:
-        csp_name=proxy.get_available_components('m3head_ms4')
-        csp_rt=m3.head.M3Head(csp_name[0])
+        csp_rt=m3.head.M3Head('m3head_ms4')
         proxy.subscribe_status(csp_rt)
     except Exception,e:
         print 'No csp head found : ',e
@@ -121,8 +116,7 @@ def get_right_arm(proxy):
     assert isinstance(proxy,m3p.M3RtProxy)
     right_arm = None
     try:
-        right_arm_name=proxy.get_available_components('m3arm_ma17')
-        right_arm=m3a.M3Arm(right_arm_name[0])
+        right_arm=m3a.M3Arm('m3arm_ma17')
         proxy.subscribe_status(right_arm)
     except Exception,e:
         print 'No right_arm head found : ',e
@@ -133,8 +127,7 @@ def get_left_arm(proxy):
     assert isinstance(proxy,m3p.M3RtProxy)
     left_arm = None
     try:
-        left_arm_name=proxy.get_available_components('m3arm_ma20')
-        left_arm=m3a.M3Arm(left_arm_name[0])
+        left_arm=m3a.M3Arm('m3arm_ma20')
         proxy.subscribe_status(left_arm)
     except Exception,e:
         print 'No left_arm head found : ',e
@@ -143,11 +136,10 @@ def get_left_arm(proxy):
 
 if __name__ == '__main__':
     server_started = False
-    proxy = m3p.M3RtProxy()
     while not server_started:
         try:
+            proxy = m3p.M3RtProxy()
             proxy.start()
-            print proxy.get_available_components()
             server_started= True
             
             right_arm = get_right_arm(proxy)
@@ -398,7 +390,7 @@ if __name__ == '__main__':
                 except KeyboardInterrupt:
                     break
                 except rospy.ROSException:
-                    break
+                    server_started= False
                 except Exception,e:
                     print 'Catching exception:',e
                     print 'M3rt serveur seems to be down, waiting for it to reboot : ',e
@@ -415,6 +407,7 @@ if __name__ == '__main__':
     if proxy:
         proxy.step()
         proxy.stop()
+    print 'Exit'
     exit()
 
 
