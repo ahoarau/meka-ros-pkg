@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+  
+  <macro name="hokuyo_laser" params="name parent *origin">
+
+    <joint name="${name}_fixed_joint" type="fixed">
+      <insert_block name="origin" /> 
+      <parent link="${parent}" />
+      <child  link="${name}_link" />
+    </joint>
+
+    <link name="${name}_link">
+      <!-- TODO: Find out UTM-30LX model: -->
+      <inertial>
+        <mass value="1.00" />
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <inertia ixx="0.866179142480"  ixy="-0.06086507933"  ixz="-0.12118061183"
+                 iyy="0.87421714893"  iyz="-0.05886609911"
+                 izz="0.27353821674" />
+      </inertial>
+      <visual>
+        <material name="GreyA" />
+	    <origin xyz="0 0 -0.020" rpy="0 0 0 " />
+	    <geometry name="b1r1_1_geom">
+	      <box size="0.060 0.060 0.080" />
+	    </geometry>  
+      </visual>
+
+      <collision>
+  	    <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
+        <geometry name="base_laser_geom">
+          <box size="0.01 0.01 0.01" />
+	    </geometry>
+      </collision>
+    </link>
+
+  </macro>
+
+</robot>

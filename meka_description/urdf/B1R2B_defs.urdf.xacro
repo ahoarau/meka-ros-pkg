@@ -8,7 +8,39 @@
  
   <macro name="meka_base" params="side parent reflect *origin">
 
+    <joint name="chassis_fixed_joint" type="fixed">
+      <!-- TODO: Confirm these values: -->
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <parent link="${parent}"/>
+      <child link="omnibase_b1r2"/>
+    </joint>
     
+    <link name="omnibase_b1r2">
+      <inertial>
+        <!-- TODO: Verify intertial values: -->
+        <mass value="50.00" />
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <inertia ixx="0.866179142480"  ixy="-0.06086507933"  ixz="-0.12118061183"
+                 iyy="0.87421714893"  iyz="-0.05886609911"
+                 izz="0.27353821674" />
+      </inertial>
+	  <visual>
+		  <material name="GreyC" />
+		  <origin xyz="0 0 0" rpy="0 0 0" />
+		  <geometry name="b1r1_3_geom">
+              <mesh filename="package://${MESH}/B1R1/B1R2_ENS.dae" />
+		  </geometry>
+	  </visual>
+	  <collision>
+		  <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
+		  <geometry name="b1r1_3_geom">
+              <mesh filename="package://${MESH}/B1R1/B1R2_ENS.stl" />
+		  </geometry>
+	  </collision>
+    </link>
+    
+  <!-- Removed this, odometry now handled properly in the state publishing node. -->
+  <!--
     <joint name="X" type="prismatic">
       <axis xyz="1 0 0" />
       <insert_block name="origin" /> 
@@ -118,6 +150,7 @@
 		  </geometry>
 	  </collision>
   </link>
+  -->
 
   </macro>
 

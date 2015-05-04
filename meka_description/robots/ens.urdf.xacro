@@ -5,6 +5,8 @@
        xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        name="meka" >
 
+ <!-- Modified from original ens.urdf.xacro to use a different omnibase model -->
+
  <property name="M_PI" value="3.1415926535897931" />
 
  
@@ -14,27 +16,61 @@
 <!-- generic simulator_gazebo plugins for starting mechanism control, ros time, ros battery >
  <xacro:include filename="$(find meka_description)/gazebo/gazebo.urdf.xacro" /-->
  <!--<xacro:include filename="$(find meka_description)/transmissions/uta.transmission.xacro" />-->
- <link name="world" />
 
- <link name="base_link" />
- <!-- Solid Base -->
+ <!-- NOTE: Removed world link, replaced by more nav-friendly 'odom' (and
+      eventually 'map') -->
+ <!--
+ <link name="world" />
  <joint name="base_joint" type="fixed">
   <origin xyz="0 0 0" rpy="0 0 0" />
   <parent link="world" />
-  <child link="base_link" />
+  <child  link="base_link" />
  </joint>
+ -->
 
-    
+  <!-- Pre-defined macro for easy fixed joint/link pairs -->
+  <xacro:macro name="fixed_link" params="parent child xyz rpy">
+    <joint name="${parent}_${child}_fixed_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="${rpy}" />
+      <parent link="${parent}" />
+      <child  link="${child}" />
+     </joint>
+    <link name="${child}"/>
+  </xacro:macro>
+
+  <!-- base footprint/link pair (base_link is referred later, odometry is published between /odom and /base_footprint) -->
+  <link name="base_footprint"/>
+  <xacro:fixed_link parent="base_footprint" child="base_link" xyz="0 0 0" rpy="0 0 0"/>
+ 
+  <!-- Fixed link for head control reference frame -->
+  <xacro:fixed_link parent="T0" child="meka_static_head" xyz="0.15 0 0.20" rpy="0 0 0"/>
+  <!-- Fixed links for Kinect -->
+  <xacro:fixed_link parent="T0" child="kinect_front_link" xyz="0.0953 0.0000 0.0000" rpy="0 0 0"/>
+  <xacro:fixed_link parent="kinect_front_link"
+                     child="kinect_front_rgb_optical_frame"
+                       xyz="0.000 -0.045 0.000"
+                       rpy="-1.571 0.000 -1.571"/>
+  <xacro:fixed_link parent="kinect_front_link"
+                     child="kinect_front_depth_optical_frame"
+                       xyz="0.000 -0.020 0.000"
+                       rpy="-1.571 0.000 -1.571"/>
+  <!-- TODO: Make sure this is still relevant: -->
+  <xacro:fixed_link parent="T0" child="kinect_top_link"   xyz="0.4764 0.2723 0.5760" rpy="0.3889 -0.6219 0.5320"/>
+
   <xacro:meka_base  side="r" reflect="1" parent="base_link">
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
   </xacro:meka_base>
 
-  <xacro:meka_zlift  side="r" reflect="1" parent="dummy_3">
-    <origin xyz="0.43 0.0 0.75" rpy="0 0 0" />
+  <xacro:meka_zlift  side="r" reflect="1" parent="base_link">
+    <!-- NOTE: ZLift is 120 mm behind what's on the mesh and original URDF -->
+    <origin xyz="0.31 0.0 0.75" rpy="0 0 0" />
   </xacro:meka_zlift>
 
-  <!-- Solid Base -->
-
+  <!-- Laser -->
+  <xacro:include filename="$(find meka_description)/urdf/hokuyo_laser.urdf.xacro" />
+  <xacro:hokuyo_laser name="base_laser" parent="base_link">
+      <origin xyz="0.325 0.000 0.380" rpy="0 0 0"/>
+  </xacro:hokuyo_laser>
 
 <!-- Meka Base -->
   <xacro:include filename="$(find meka_description)/urdf/B1R2B_defs.urdf.xacro" />
@@ -54,10 +90,8 @@
   <xacro:include filename="$(find meka_description)/urdf/H2R4_l_hand_defs.urdf.xacro" />
 
   
-<!-- Meka Head -->
+  <!-- Meka Head -->
   <xacro:include filename="$(find meka_description)/urdf/ENS_head_defs.urdf.xacro" />
-
-
 
   <!-- john added transmissions >
   <xacro:include filename="$(find meka_description)/transmissions/A2R4_r_arm_defs.transmission.xacro" />
@@ -108,6 +142,22 @@
     <origin xyz="0.0 0.18465 0.2337" rpy="0 0 0" />
   </xacro:m3_l_arm>
 
+   <joint name="fixed_left_wrist_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <parent link="elbowclevis_LEFT"/>
+    <child link="fixed_left_wrist"/>
+    <origin xyz="0 0 -0.27747" rpy="0 90 0" />
+  </joint>
+ <link name="fixed_left_wrist">
+ </link> 
+ 
+   <joint name="fixed_right_wrist_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <parent link="elbowclevis_RIGHT"/>
+    <child link="fixed_right_wrist"/>
+    <origin xyz="0 0 -0.27747" rpy="0 90 0" />
+  </joint>
+ <link name="fixed_right_wrist"/>
   
 
 
