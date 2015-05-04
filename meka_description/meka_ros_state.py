@@ -26,7 +26,6 @@ import rospy
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Header
 
-import m3.gui as m3g
 import m3.rt_proxy as m3p
 import m3.arm as m3a
 import m3.hand as m3ha
@@ -275,12 +274,12 @@ if __name__ == '__main__':
             rospy.init_node("m3_joint_state_publisher")
             pub = rospy.Publisher("/joint_states", JointState,queue_size=1)
             loop_rate = rospy.Rate(50.0)
-            header = Header(0, rospy.Time.now(), '0')
+            header = Header(0, rospy.Time.now() + rospy.Duration(0.5), '0')
             positions = [0.0]*len(joints)
             print 'Entering ROS Node'
             while not rospy.is_shutdown() and server_started:
                 try:
-                    header = Header(0, rospy.Time.now(), '0')
+                    header = Header(0, rospy.Time.now() + rospy.Duration(0.5), '0')
                     # Omnibase state
                     proxy.step()
                     i=0
