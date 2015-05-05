@@ -1,0 +1,12 @@
+<launch>
+  <node name="joy"
+         pkg="joy"
+        type="joy_node"/>
+
+  <node name="teleop"
+         pkg="meka_omnibase_tools"
+        type="teleop.py">
+    <remap from="cmd_vel" to="cmd_vel"/>
+  </node>
+</launch>
+
